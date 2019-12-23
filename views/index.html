@@ -15,39 +15,13 @@
 </head>
 <body>
 
-<section class='container'>
-          <hgroup>
-            <h2>IOW Prediction </h2>
-          </hgroup>
+<div class='container'>
 
-
-        <div class="row">
-          <section class='col-xs-12 col-sm-6 col-md-6'>
-            <section>
-	
-			<h3>Insert parameter:</h3>	
-		    
-		    <form action="/getScore" method="post">
-				
-				<label>Parameter 1</label> <input id="param1" type="text" value="" placeholder="Parameter 1" />
-				
-				<label>Parameter 2</label> <input id="param2" type="text" value="" placeholder="Parameter 2" />
-				
-				<label>Parameter 3</label> <input id="param3" type="text" value="" placeholder="Parameter 3" />
-				
-				<label>Parameter 4</label> <input id="param4" type="text" value="" placeholder="Parameter 4" />
-				
-				<label>Parameter 5</label> <input id="param5" type="text" value="" placeholder="Parameter 5" />
-				
-              	<input type="submit" value="Submit">
-				
-			</form>
-		</section>
-          </section>
 	
 <div class="row">
     <form class="col s12" action="/getScore" method="post">
-  
+	  <h3>IOW Prediction </h3>
+	  <h4>Insert parameter:</h4>	
       <div class="row">
         <div class="input-field inline col s2">
           <input placeholder="Parameter 1" id="param_1" type="text" class="validate">
@@ -69,6 +43,9 @@
           <input placeholder="Parameter 5" id="param_5" type="text" class="validate">
           <label for="param_5">Parameter 5</label>
         </div>
+		<div class="inline col s2">
+		  <input type="submit" value="Submit">
+        </div>
 		<div class="input-field inline col s2">
 		  <input type="submit" value="Submit">
           <input disabled placeholder="Value" id="out_value" type="text" class="validate">
@@ -82,7 +59,6 @@
           <div class="input-field inline">
             <input id="email_inline" type="email" class="validate">
             <label for="email_inline">Email</label>
-            <!-- <span class="helper-text" data-error="wrong" data-success="right">Helper text</span> -->
           </div>
         </div>
       </div>
@@ -113,6 +89,6 @@
         <footer>
           <div class="logo"></div>
         </footer>
-</section>
+</div>
 </body>
 </html>
