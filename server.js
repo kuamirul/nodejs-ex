@@ -76,7 +76,9 @@ var initDb = function(callback) {
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
-  res.send('GET request to the homepage')
+  res.render('index.html', function (err, html) {
+    res.send('<p>some html</p>')
+  })
   if (!db) {
     initDb(function(err){});
   }
