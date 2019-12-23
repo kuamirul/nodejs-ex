@@ -111,6 +111,7 @@ app.get('/pagecount', function (req, res) {
 
 app.post('/getScore', function(req, res){ // Specifies which URL to listen for
   // req.body -- contains form data
+    res.send('GET request to the homepage')
 });
 
 // error handling
