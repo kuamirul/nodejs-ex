@@ -76,9 +76,7 @@ var initDb = function(callback) {
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
-  res.render('index.html', function (err, html) {
-    res.send('<p>some html</p>')
-  })
+  res.render('index.html',  { pageCountMessage : 'test'});
   if (!db) {
     initDb(function(err){});
   }
