@@ -27,60 +27,27 @@
 	
 			<h3>Insert parameter:</h3>	
 		    
-		    	<form action="/getScore" method="post">
+		    <form action="/getScore" method="post">
 				
-			<label>Parameter 1</label> <input id="param1" type="text" value="" placeholder="Parameter 1" />
-			
-			<label>Parameter 2</label> <input id="param2" type="text" value="" placeholder="Parameter 2" />
-			
-			<label>Parameter 3</label> <input id="param3" type="text" value="" placeholder="Parameter 3" />
-			
-			<label>Parameter 4</label> <input id="param4" type="text" value="" placeholder="Parameter 4" />
-			
-			<label>Parameter 5</label> <input id="param5" type="text" value="" placeholder="Parameter 5" />
-			
-              		<input type="submit" value="Submit">
+				<label>Parameter 1</label> <input id="param1" type="text" value="" placeholder="Parameter 1" />
+				
+				<label>Parameter 2</label> <input id="param2" type="text" value="" placeholder="Parameter 2" />
+				
+				<label>Parameter 3</label> <input id="param3" type="text" value="" placeholder="Parameter 3" />
+				
+				<label>Parameter 4</label> <input id="param4" type="text" value="" placeholder="Parameter 4" />
+				
+				<label>Parameter 5</label> <input id="param5" type="text" value="" placeholder="Parameter 5" />
+				
+              	<input type="submit" value="Submit">
 				
 			</form>
 		</section>
           </section>
 	
 <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s2">
-          <input placeholder="Parameter 1" id="param_1" type="text" class="validate">
-          <label for="param_1">Parameter 1</label>
-        </div>
-		<div class="input-field col s2">
-          <input placeholder="Parameter 2" id="param_2" type="text" class="validate">
-          <label for="param_2">Parameter 2</label>
-        </div>
-		<div class="input-field col s2">
-          <input placeholder="Parameter 3" id="param_3" type="text" class="validate">
-          <label for="param_3">Parameter 3</label>
-        </div>
-		<div class="input-field col s2">
-          <input placeholder="Parameter 4" id="param_4" type="text" class="validate">
-          <label for="param_4">Parameter 4</label>
-        </div>
-		<div class="input-field col s2">
-          <input placeholder="Parameter 5" id="param_5" type="text" class="validate">
-          <label for="param_5">Parameter 5</label>
-        </div>
-		<div class="input-field col s2">
-          <input placeholder="Value" id="out_value" type="text" class="validate">
-          <label for="param_">Predicted value:</label>
-        </div>
-      </div>
-	  
-      <div class="row">
-        <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
-        </div>
-      </div>
-
+    <form class="col s12" action="/getScore" method="post">
+  
       <div class="row">
         <div class="input-field inline col s2">
           <input placeholder="Parameter 1" id="param_1" type="text" class="validate">
@@ -103,6 +70,7 @@
           <label for="param_5">Parameter 5</label>
         </div>
 		<div class="input-field inline col s2">
+		  <input type="submit" value="Submit">
           <input disabled placeholder="Value" id="out_value" type="text" class="validate">
           <label for="param_">Predicted value:</label>
         </div>
@@ -118,6 +86,7 @@
           </div>
         </div>
       </div>
+	  
     </form>
   </div>
         	
