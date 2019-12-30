@@ -112,8 +112,21 @@ app.get('/pagecount', function (req, res) {
 app.get('/getScore', function (req, res) {
   // try to initialize the db on every request if it's not already initialized.
 
-   res.send('{ pageCount: -1 }');
+   //res.send('{ pageCount: -1 }');
     //res.render('score.html');
+    const https = require("https");
+    const url = "https://jsonplaceholder.typicode.com/posts/1";
+    https.get(url, res => {
+      res.setEncoding("utf8");
+      let body = "";
+      res.on("data", data => {
+        body += data;
+      });
+      res.on("end", () => {
+        body = JSON.parse(body);
+        console.log(body);
+      });
+    });
   
 });
 
