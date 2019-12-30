@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script  src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="  crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -44,7 +46,7 @@
           <!-- <label for="param_5">Parameter 5</label> -->
         <!-- </div> -->
 		<div class="col s2">
-		  <input type="submit" value="Submit">
+		  <input type="submit" value="Get Prediction">
 		<div class="input-field inline">
           <input disabled placeholder="Predicted value" id="out_value" type="text" class="validate">
           <label for="out_value">Predicted value:</label>
@@ -80,11 +82,55 @@
                    <!-- </p> -->
                 <!-- <%} %> -->
           <!-- </section> -->
+          <p id="encoded"></p>
+          <p id="error"></p>
         </div>
 
         <footer>
           <div class="logo"></div>
         </footer>
 </div>
+
+
+<script>
+/* curl \
+	-X POST \
+	-d '{"fields": ["PC_PMO_DLB_TCP_CGCE_CD563_AN_Air_Supply_Pressure", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Bleed_Valve_Position", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Cooldown_Time_Remaining", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Cpsr_Press_Hold_Time_Rem", "PC_PMO_DLB_TCP_CGCE_CD563_AN_DC_Supply_Voltage"], "rows": [["713.56884765625", "0.074519082903862", "601.7633666992188", "108.3054428100586", "27.437639236450195"]]}' \
+	http://localhost:8181/models/0fe07078-1a58-11ea-b2dc-d8c497b8323d/score \
+	-H "Content-Type: application/json" 
+
+
+$.ajax("http://172.16.239.131:8181/models/0fe07078-1a58-11ea-b2dc-d8c497b8323d/score", {
+    type: "POST",
+    data: {"fields": ["PC_PMO_DLB_TCP_CGCE_CD563_AN_Air_Supply_Pressure", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Bleed_Valve_Position", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Cooldown_Time_Remaining", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Cpsr_Press_Hold_Time_Rem", "PC_PMO_DLB_TCP_CGCE_CD563_AN_DC_Supply_Voltage"], "rows": [["713.56884765625", "0.074519082903862", "601.7633666992188", "108.3054428100586", "27.437639236450195"]]},    
+    contentType: "application/json",
+}).done(function (data) {
+    console.log(data);
+    $("#encoded").html(data.encoded);
+}).fail(function (xhr, status, error) {
+    $("#error").html("Could not reach the API: " + error);
+});
+*/
+
+fetch("http://172.16.239.131:8181/models/0fe07078-1a58-11ea-b2dc-d8c497b8323d/score", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: {"fields": ["PC_PMO_DLB_TCP_CGCE_CD563_AN_Air_Supply_Pressure", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Bleed_Valve_Position", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Cooldown_Time_Remaining", "PC_PMO_DLB_TCP_CGCE_CD563_AN_Cpsr_Press_Hold_Time_Rem", "PC_PMO_DLB_TCP_CGCE_CD563_AN_DC_Supply_Voltage"], "rows": [["713.56884765625", "0.074519082903862", "601.7633666992188", "108.3054428100586", "27.437639236450195"]]},
+    mode: "cors"
+}).then(function(response) {
+    if (response.ok) {
+        return response.json();
+    } else {
+        throw new Error("Could not reach the API: " + response.statusText);
+    }
+}).then(function(data) {
+    document.getElementById("encoded").innerHTML = data.encoded;
+}).catch(function(error) {
+    document.getElementById("error").innerHTML = error.message;
+});
+
+</script>
 </body>
 </html>
